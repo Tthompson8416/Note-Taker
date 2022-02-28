@@ -14,19 +14,9 @@ app.use(express.json());
 
 app.use(express.static('public'));
 
-function createNewNote(body) {
-    const note = body;
-         notesArray.push(note);
-         fs.writeFileSync(
-        path.join(_dirname, './db/db.json'),
-        JSON.stringify({notes: notesArray }, null, 2)
-    );
 
-    return note;
 
-}
-
-app.get('/api/notes', (req, res) => {
+app.get('/api/public/notes.html', (req, res) => {
     let results = notes;
     if (req.query) {
         results = filterByQuery(req.query, results);
