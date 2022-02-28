@@ -1,10 +1,8 @@
 const fs = require('fs');
 const path = require('path');
 
-const notes = require('./db/db.json');
+const { notes } = require('./db/db.json');
 const express = require('express');
-console.log(notes);
-
 
 const PORT = process.env.PORT || 3009;
 const app = express();
@@ -16,18 +14,31 @@ app.use(express.json());
 
 app.use(express.static('public'));
 
-app.listen(PORT, () => console.log('listening on port: ${PORT}'));
-// function 
-// function createNewNote(body) {
-//     const note = body;
-//     notesArray.push(note);
-//     fs.writeFileSync(
-//         path.join(_dirname, './db/db.json'),
-//         JSON.stringify({notes: notesArray }, null, 2)
-//     );
+function createNewNote(body) {
+    const note = body;
+         notesArray.push(note);
+         fs.writeFileSync(
+        path.join(_dirname, './db/db.json'),
+        JSON.stringify({notes: notesArray }, null, 2)
+    );
 
-//     return note;
-// }
+    return note;
+
+}
+
+app.get('/api/animals', (req, res) => {
+    let results = animals;
+    if (req.query) {
+        results = filterByQuery(req.query, results);
+    }
+    res.json(results);
+});
+
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, './db/public/index.html'));
+  });
+
+app.listen(PORT, () => console.log('listening on port: ${PORT}'));
 
 
 // post 
