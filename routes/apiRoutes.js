@@ -9,7 +9,7 @@ router.get('/api/public/notes.html', (req, res) => {
     res.json(results);
 });
 
-post 
+ 
 router.post('/api/notes', (req, res) => {
     // set id based on what the next index of the array will be
     req.body.id = notes.length.toString();
@@ -19,3 +19,8 @@ router.post('/api/notes', (req, res) => {
 
     res.json(notes);
 });
+
+router.get('/db/db.json', (req, res) => {
+    
+})
+module.exports = router;
