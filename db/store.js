@@ -29,6 +29,20 @@ class Store {
         })
     }
 
+    addNotes() {
+        return this.write().then((notes) => {
+            console.log(notes)
+            let parsedNotes;
+            try {
+                parsedNotes = [].concat(JSON.parse(notes))
+            } catch (err) {
+                parsedNotes = []
+
+            }
+            return parsedNotes;
+        })
+    }
+
 }
 
 module.exports = new Store();
