@@ -1,4 +1,4 @@
-# Note Taker Starter Code
+# Note Taker
 
 WHEN the user opens the Note Taker app they presented with the landing page. 
 THEN when Get Started is clicked, the user presented with a page with existing notes listed in the left-hand column, plus empty fields to enter a new note title and the note’s text in the right-hand column.
