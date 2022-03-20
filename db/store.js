@@ -1,6 +1,6 @@
 const fs = require("fs")
 const util = require("util")
-// const uuidv1 = require('uuid/v1')
+const uuidv1 = require('uuidv1')
 
 const readFileAsync = util.promisify(fs.readFile);
 
@@ -29,18 +29,30 @@ class Store {
         })
     }
 
-    addNotes() {
-        return this.write().then((notes) => {
-            console.log(notes)
-            let parsedNotes;
-            try {
-                parsedNotes = [].concat(JSON.parse(notes))
-            } catch (err) {
-                parsedNotes = []
+    addNote(note) {
+        const {title, text} = note
+        const newNote = {title, text, id: uuidv1()};
 
-            }
-            return parsedNotes;
-        })
+        return this.getNotes()
+        .then((notes) => [...notes, newNote])
+        .then((updatedNotes) => this.write(updatedNotes))
+        .then(() => newNote)
+
+    removeNote(note) {
+        
+    }
+
+        // return this.write().then((notes) => {
+        //     console.log(notes)
+        //     let parsedNotes;
+        //     try {
+        //         parsedNotes = [].concat(JSON.parse(notes))
+        //     } catch (err) {
+        //         parsedNotes = []
+
+        //     }
+        //     return parsedNotes;
+        // })
     }
 
 }
