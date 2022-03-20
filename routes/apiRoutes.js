@@ -20,11 +20,13 @@ router.post('/notes', (req, res) => {
     // res.json(notes);
 });
 
-router.delete()
-store
-    .deleteNote(req.params.Id)
+router.delete('/notes', (req, res) => {
+    store
+        .deleteNote(req.params.Id)
+        .then((note) => res.json(note))
+});
 
-router.get('/db/db.json', (req, res) => {
+    router.get('/db/db.json', (req, res) => {
 
-})
-module.exports = router;
+    })
+    module.exports = router;
