@@ -37,30 +37,20 @@ class Store {
             .then((notes) => [...notes, newNote])
             .then((updatedNotes) => this.write(updatedNotes))
             .then(() => newNote)
+    
     }
 
+        // return this.write().then((notes) => {
+        //     console.log(notes)
+        //     let parsedNotes;
+        //     try {
+        //         parsedNotes = [].concat(JSON.parse(notes))
+        //     } catch (err) {
+        //         parsedNotes = []
 
-    removeNote(note) {
-        const { title, text } = note
-        const deleteNote = { title, text, id: uuidv1() };
-
-        return this.deleteNote()
-
+        //     }
+        //     return parsedNotes;
+        // })
     }
-
-    // return this.write().then((notes) => {
-    //     console.log(notes)
-    //     let parsedNotes;
-    //     try {
-    //         parsedNotes = [].concat(JSON.parse(notes))
-    //     } catch (err) {
-    //         parsedNotes = []
-
-    //     }
-    //     return parsedNotes;
-    // })
-}
-
-
 
 module.exports = new Store();

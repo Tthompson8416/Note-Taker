@@ -20,12 +20,6 @@ router.post('/notes', (req, res) => {
     // res.json(notes);
 });
 
-router.delete('/notes', (req, res) => {
-    store
-        .deleteNote(req.params.Id)
-        .then((note) => res.json(note))
-});
-
     router.get('/db/db.json', (req, res) => {
 
     })
