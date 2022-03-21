@@ -3,7 +3,7 @@ const apiRoutes = require('./routes/apiRoutes')
 const htmlRoutes = require('./routes/htmlRoutes')
 
 const app = express()
-const PORT = 3009
+const PORT = process.env.PORT || 3009
 
 // function createNewNote(body, createNewNote {
 //     console.log(body);
